@@ -47,16 +47,15 @@ class EmailSender:
 
 # Usage example
 if __name__ == '__main__':
+
+    sheet_data = pd.read_excel('excel/records.xlsx').to_dict(orient='records')
+
     smtp_server = 'smtp.163.com'
     smtp_port = 25  # Use 587 for STARTTLS
-    # smtp_username = 'sender@se.com' # CHANGE IT
-    # smtp_password = 'P@SSW0RD' # CHANGE IT
-    # receiver_addr = 'receiver@re.com' # CHANGE IT
     smtp_username = input('input your mail addr\n')
     smtp_password = input('input your password\n')
     receiver_addr = input("input your receiver's mail addr\n")
 
-    sheet_data = pd.read_excel('excel/records.xlsx').to_dict(orient='records')
 
     data = {'Receiver': 'winterbear',
             'Region_A': 'RA',

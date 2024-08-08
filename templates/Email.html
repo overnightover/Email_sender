@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css" style="display:none;">
+        P {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body dir="ltr">
+    <div class="elementToProof"><span
+            style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">Dear {{ Receiver }}</span></div>
+    <div style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><br>
+        </span>
+    </div>
+    <div style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">Please find
+            attached the results of today's session. Currently, we have the following status:</span>
+    </div>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><br>
+        </span>
+    </div>
+    <table style="width: 263pt; box-sizing: border-box; border-collapse: collapse; border-spacing: 0px;">
+        <tbody>
+            <tr>
+                <td colspan="3"
+                    style="text-align: center; white-space: nowrap; border-bottom: 0.5pt solid; background-color: rgb(0, 32, 96); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; width: 263pt; height: 15pt;">
+                    <div style="text-align: center; white-space: nowrap;"><span
+                            style="font-family: &quot;Aptos Narrow&quot;, sans-serif; font-size: 11pt; color: white; font-weight: 700;">HES
+                            Test Cases</span></div>
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="text-align: center; white-space: nowrap; border-right: 0.5pt solid; border-bottom: 0.5pt solid; border-left: 0.5pt solid; background-color: rgb(0, 32, 96); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; width: 133.333px; height: 15pt;">
+                    <div style="text-align: center; white-space: nowrap;"><span
+                            style="font-family: Calibri, sans-serif; font-size: 11pt; color: white; font-weight: 700;">Status</span>
+                    </div>
+                </td>
+                <td
+                    style="text-align: center; white-space: nowrap; border-right: 0.5pt solid; border-bottom: 0.5pt solid; background-color: rgb(0, 32, 96); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; width: 116px;">
+                    <div style="text-align: center; white-space: nowrap;"><span
+                            style="font-family: Calibri, sans-serif; font-size: 11pt; color: white; font-weight: 700;">{{ Region_A }}</span>
+                    </div>
+                </td>
+                <td
+                    style="text-align: center; white-space: nowrap; border-right: 0.5pt solid; border-bottom: 0.5pt solid; background-color: rgb(0, 32, 96); padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; width: 101.333px;">
+                    <div style="text-align: center; white-space: nowrap;"><span
+                            style="font-family: Calibri, sans-serif; font-size: 11pt; color: white; font-weight: 700;">{{ Region_B }}</span>
+                    </div>
+                </td>
+            </tr>
+            {% for row in data %}
+            <tr>
+                {% for value in row.values() %}
+                <td
+                    style="text-align: center; white-space: nowrap; border-right: 0.5pt solid; border-bottom: 0.5pt solid; border-left: 0.5pt solid; padding-top: 1px; padding-right: 1px; padding-left: 1px; vertical-align: bottom; width: 133.333px; height: 15pt;">
+                    <div style="text-align: center; white-space: nowrap;"><span
+                            style="font-family: Calibri, sans-serif; font-size: 11pt; color: black;">{{ value }}</span></div>
+                </td>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"></span>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><br>
+        </span>
+    </div>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">Please check
+            the additional test cases added by Chilquinta "Additional test cases - KPI verification"</span>
+    </div>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><br>
+        </span>
+    </div>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">We want to
+            clarify the following situation. On March 8, the laboratory meters have a gap of information from around
+            20:00 until Sunday, March 10 at 00:00 without
+            power down alarm, resulting in KPI of 0% for March 9. When the data was manually requested, meter
+            NRC1020110000785 sent all the information from March 9, raising further concerns:</span>
+    </div>
+    <ul style="margin-top: 0px; margin-bottom: 0px;">
+        <li style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">
+            <div class="elementToProof"><span
+                    style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">Are the
+                    data collection processes functioning properly in Testing? If so, why hasn't the information from
+                    the laboratory meters been
+                    completed in the gap period? It is important to ensure that the tasks for collecting missing data
+                    works correctly to guarantee the proper acquisition of data and improve the KPIs.</span></div>
+        </li>
+        <li style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">
+            <div class="elementToProof"><span
+                    style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">Did NARI
+                    perform any system updates on the testing environment during the period that the meter have a data
+                    gap?</span></div>
+            <div class="elementToProof"><span
+                    style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><br>
+                </span></div>
+        </li>
+    </ul>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">We will
+            continue advancing on the test cases so that in the next session we can start checking the failed cases and
+            the new findings.</span>
+    </div>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><br>
+        </span>
+    </div>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">Best
+            regards,</span>
+    </div>
+    <div class="elementToProof"
+        style="text-align: left; text-indent: 0px; background-color: rgb(255, 255, 255); margin: 0px;">
+        <span style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">Cristian</span>
+    </div>
+    <div class="elementToProof"
+        style="font-family: Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);">
+        <br>
+    </div>
+
+</body>
+
+</html>

@@ -80,7 +80,7 @@ class EmailSender:
         except Exception as e:
             print(f'邮件发送失败: {e}')
 
-def get_smtp_config(config_file='config.ini'):
+def get_config(config_file='config.ini'):
     """
     获取SMTP配置，如果配置文件中没有相关信息，则要求用户输入并更新配置文件
 
@@ -93,10 +93,15 @@ def get_smtp_config(config_file='config.ini'):
     if 'SMTP' not in config:
         config['SMTP'] = {}
 
+    if 'RECV' not in config:
+        config['RECV'] = {}
+
     smtp_server = config['SMTP'].get('server', '')
     smtp_port = config['SMTP'].getint('port', 0)
     smtp_username = config['SMTP'].get('username', '')
     smtp_password = config['SMTP'].get('password', '')
+
+    receiver_addrs = config['RECV'].get('receiver', '')
 
     if not smtp_server:
         smtp_server = input('请输入SMTP服务器地址: ')
@@ -114,20 +119,24 @@ def get_smtp_config(config_file='config.ini'):
         smtp_password = input('请输入SMTP密码: ')
         config['SMTP']['password'] = smtp_password
 
+    if not receiver_addrs:
+        receiver_addrs = input('请输入接收者的邮箱地址（用逗号分隔多个地址）: ')
+        config['RECV']['receiver'] = receiver_addrs
+
     with open(config_file, 'w') as configfile:
         config.write(configfile)
 
-    return smtp_server, smtp_port, smtp_username, smtp_password
-# 使用示例
+    receiver_list = [email.strip() for email in receiver_addrs.split(',')]
+    return smtp_server, smtp_port, smtp_username, smtp_password, receiver_list
 
+# 使用示例
 if __name__ == '__main__':
     # 从Excel文件读取数据
     sheet_data = pd.read_excel('excel/records.xlsx').to_dict(orient='records')
+    print(sheet_data)
 
     # 获取SMTP服务器配置
-    smtp_server, smtp_port, smtp_username, smtp_password = get_smtp_config()
-    # 获取接收者地址
-    receiver_addr = input("请输入接收者的邮箱地址: ")
+    smtp_server, smtp_port, smtp_username, smtp_password, receiver_addrs = get_config()
 
     # 准备模板数据
     data = {
@@ -140,4 +149,5 @@ if __name__ == '__main__':
 
     # 创建EmailSender实例并发送邮件
     email_sender = EmailSender(smtp_server, smtp_port, smtp_username, smtp_password)
-    email_sender.send_email(receiver_addr, 'Email.html', **data)
+    for receiver_addr in receiver_addrs :
+        email_sender.send_email(receiver_addr, 'Email.html', **data)

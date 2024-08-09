@@ -1,3 +1,4 @@
+import configparser
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -79,21 +80,54 @@ class EmailSender:
         except Exception as e:
             print(f'邮件发送失败: {e}')
 
+def get_smtp_config(config_file='config.ini'):
+    """
+    获取SMTP配置，如果配置文件中没有相关信息，则要求用户输入并更新配置文件
 
+    :param config_file: 配置文件名
+    :return: SMTP服务器地址、端口、用户名和密码
+    """
+    config = configparser.ConfigParser()
+    config.read(config_file)
+
+    if 'SMTP' not in config:
+        config['SMTP'] = {}
+
+    smtp_server = config['SMTP'].get('server', '')
+    smtp_port = config['SMTP'].getint('port', 0)
+    smtp_username = config['SMTP'].get('username', '')
+    smtp_password = config['SMTP'].get('password', '')
+
+    if not smtp_server:
+        smtp_server = input('请输入SMTP服务器地址: ')
+        config['SMTP']['server'] = smtp_server
+
+    if not smtp_port:
+        smtp_port = int(input('请输入SMTP服务器端口: '))
+        config['SMTP']['port'] = str(smtp_port)
+
+    if not smtp_username:
+        smtp_username = input('请输入SMTP用户名: ')
+        config['SMTP']['username'] = smtp_username
+
+    if not smtp_password:
+        smtp_password = input('请输入SMTP密码: ')
+        config['SMTP']['password'] = smtp_password
+
+    with open(config_file, 'w') as configfile:
+        config.write(configfile)
+
+    return smtp_server, smtp_port, smtp_username, smtp_password
 # 使用示例
 
 if __name__ == '__main__':
     # 从Excel文件读取数据
     sheet_data = pd.read_excel('excel/records.xlsx').to_dict(orient='records')
 
-    # 获取SMTP服务器配置和接收者地址
-    smtp_server = 'smtp.163.com'
-    smtp_port = 25  # 使用587端口用于STARTTLS
-    smtp_username = input('请输入你的邮箱地址: ')
-    smtp_password = input('请输入你的邮箱密码: ')
-
+    # 获取SMTP服务器配置
+    smtp_server, smtp_port, smtp_username, smtp_password = get_smtp_config()
+    # 获取接收者地址
     receiver_addr = input("请输入接收者的邮箱地址: ")
-
 
     # 准备模板数据
     data = {
